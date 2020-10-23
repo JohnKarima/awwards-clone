@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
-from .models import Profile, Project
+from .models import Profile, Project, User
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ProjectUploadForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 @login_required
 def index(request):
     projects = Project.objects.all()
-    return render(request, 'index.html', {"projects":projects[::-1]})
+    users = User.objects.all()
+    return render(request, 'index.html', {"projects":projects[::-1], "users": users})
 
 def register(request):
     if request.method == 'POST':

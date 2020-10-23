@@ -23,7 +23,7 @@ class Project(models.Model):
     description = models.TextField()
     link = models.CharField(max_length = 200, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', null=True)
+    user_ref = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', null=True)
 
     class Meta:
         '''

@@ -2,7 +2,7 @@
 Awwards
 
 # Project Description 
-- 
+-  An application like that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
 # Link to Live Project
 - https://awaardsclone343.herokuapp.com
