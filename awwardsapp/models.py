@@ -8,7 +8,7 @@ import datetime as dt
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField()
     profile_photo = CloudinaryField('profile_photo')
 
