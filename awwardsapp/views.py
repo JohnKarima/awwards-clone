@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import Profile, Project
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ProjectUploadForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def index(request):
-    return render(request, 'index.html')
+    projects = Project.objects.all()
+    return render(request, 'index.html', {"projects":projects[::-1]})
 
 def register(request):
     if request.method == 'POST':
@@ -47,3 +49,17 @@ def update(request):
         'p_form': p_form
     }
     return render(request, 'users/update.html', context)
+
+@login_required
+def upload_project(request):
+    if request.method == "POST":
+        form = ProjectUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit = False)
+            project.user = request.user.profile
+            project.save()
+            messages.success(request, f'Successfully uploaded your Project!')
+            return redirect('index')
+    else:
+        form = ProjectUploadForm()
+    return render(request, 'upload_project.html', {"form": form})
