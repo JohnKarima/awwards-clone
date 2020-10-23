@@ -28,7 +28,8 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    projects = request.user.profile.projects.all()
+    return render(request, 'users/profile.html', {"projects":projects[::-1]})
 
 
 @login_required
