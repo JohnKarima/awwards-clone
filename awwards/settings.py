@@ -135,9 +135,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 cloudinary.config(
     cloud_name=config('CLOUD_NAME'),
     api_key=config('CLOUD_API_KEY'),
     api_secret=config('CLOUD_API_SECRET'))
     
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
