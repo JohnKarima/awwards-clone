@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags%}
+{% block content %}
+{{block.super}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1 class="text-center">Awwards</h1>
+            <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center">Awwwards are the Website Awards that recognize and promote the talent and effort of the best developers, designers and web agencies in the world.</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="from-group text-center">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+            </form><br>
+            <div class="border-top pt-3 text-center">
+                <small class="text-muted">Already Have an Account?
+
+                </small>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

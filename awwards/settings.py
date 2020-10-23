@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'awwardsapp',
+    'awwardsapp.apps.AwwardsappConfig',
     'crispy_forms',
     'cloudinary',
 ]
@@ -78,11 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'awwards.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
