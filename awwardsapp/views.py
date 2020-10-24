@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
 from .models import Profile, Project, User
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ProjectUploadForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ProjectUploadForm, RateForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
+from django.http.response import Http404
 
 @login_required
 def index(request):
@@ -65,3 +66,25 @@ def upload_project(request):
     else:
         form = ProjectUploadForm()
     return render(request, 'upload_project.html', {"form": form})
+
+def project(request,project_id):
+    try:
+        project = Project.objects.get(id = project_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,"project.html", {"project":project})
+
+
+
+# def Rate(request, project_id):
+#     project = Project.objects.get(id=project_id)
+#     user = request.user
+
+#     if request.method == 'POST':
+#         form = RateForm(request.POST)
+#         if form.is_valid():
+#             rate = form.save(commit=False)
+#             rate.user = user
+#             rate.project = project
+#             rate.save()
+#             return redirect('project')

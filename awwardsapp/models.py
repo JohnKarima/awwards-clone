@@ -23,10 +23,37 @@ class Project(models.Model):
     description = models.TextField()
     link = models.CharField(max_length = 200, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    user_ref = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', null=True)
+    prof_ref = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects', null=True)
 
     class Meta:
-        '''
-        Class method to display images by date published
-        '''
+    
         ordering = ['pub_date']
+    
+    def __str__(self):
+        return self.title
+
+
+
+RATE_CHOICES = [
+    (1,'1-Dung'),
+    (2,'2-Troll'),
+    (3,'3-Awful'),
+    (4,'4-Poor'),
+    (5,'5-Average'),
+    (6,'6-Barely Above Average'),
+    (7,'7-Good'),
+    (8,'Excellent'),
+    (9,'Exceeds Expectations'),
+    (10,'10-Outstanding'),
+]
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    review = models.TextField(null=True)
+    rate_design = models.PositiveSmallIntegerField(choices = RATE_CHOICES)
+    rate_usability = models.PositiveSmallIntegerField(choices = RATE_CHOICES)
+    rate_content = models.PositiveSmallIntegerField(choices = RATE_CHOICES)
+
+    def __str__(self):
+        return self.user.username

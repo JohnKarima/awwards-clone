@@ -8,11 +8,11 @@
 <h1> Welcome to Awwards!!!</h1>
 {% for project in projects %}
 
-    <p><strong>By:</strong> {{project.user_ref.user.username}}</p>
+    <p><strong>By:</strong> {{project.prof_ref.user.username}}</p>
     <p><strong>Title:</strong> {{project.title}}</p>
     <p><strong>Description:</strong> {{project.description}}</p>
     <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
-    <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image">
+    <a href="{% url 'project' project.id %}"><img src="{{project.project_image.url}}" style="width:30%;" class="card-img" alt="Image"></a>
     <p><strong>Posted:</strong> {{project.pub_date}}</p> 
                     
                 

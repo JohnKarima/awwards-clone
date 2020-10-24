@@ -11,6 +11,8 @@ urlpatterns=[
     path('profile/', views.profile, name='profile'),
     path('update/', views.update, name='update'),
     path('upload_project/', views.upload_project, name='upload_project'),
+    path('project/<project_id>/',views.project,name ='project'),
+
 
 
 
