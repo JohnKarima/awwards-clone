@@ -5,7 +5,7 @@ Awwards
 -  An application like that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
 # Link to Live Project
-- https://awaardsclone343.herokuapp.com
+- https://awwardsclone343.herokuapp.com
 
 # Author 
 - [John Karima](https://github.com/JohnKarima)
@@ -14,7 +14,7 @@ Awwards
 
 ### Cloning
 ```
-$ git clone https://github.com/JohnKarima/awaards
+$ git clone https://github.com/JohnKarima/awwards
 ```
 ### Move into directory and install requirements
 ```

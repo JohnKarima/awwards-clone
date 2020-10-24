@@ -1,6 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import ListProfileView, ListProjectView
 
 
 urlpatterns=[
@@ -14,6 +15,10 @@ urlpatterns=[
     path('project/<project_id>/',views.project,name ='project'),
     path('rate/<project_id>/',views.rate,name ='rate'),
     path('search/', views.search_results, name='search_results'),
+    path('api/profile/', ListProfileView.as_view(), name="profile-all"),
+    path('api/project/', ListProjectView.as_view(), name="project-all")
+
+
 
 
 

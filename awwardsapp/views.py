@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404
+from rest_framework import generics
+from .serializers import ProfileSerializer, ProjectSerializer
 
 @login_required
 def index(request):
@@ -32,6 +34,13 @@ def register(request):
 def profile(request):
     projects = request.user.profile.projects.all()
     return render(request, 'users/profile.html', {"projects":projects[::-1]})
+
+class ListProfileView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 
 @login_required
@@ -75,6 +84,12 @@ def project(request,project_id):
         raise Http404()
     return render(request,"project.html", {"project":project})
 
+class ListProjectView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
 
 
 def rate(request, project_id):

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'awwardsapp.apps.AwwardsappConfig',
     'crispy_forms',
     'cloudinary',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
