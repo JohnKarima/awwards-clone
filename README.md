@@ -54,6 +54,7 @@ $ python3 manage.py test instaapp
 - pillow
 - cloudinary
 - crispy forms
+- djangorestframework
 
 # Contact Information
 karimajohn24@gmail.com

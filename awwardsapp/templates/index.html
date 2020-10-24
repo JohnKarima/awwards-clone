@@ -8,7 +8,7 @@
 <h1> Welcome to Awwards!!!</h1>
 {% for project in projects %}
 
-<p><strong>Average Rating:</strong> {{project.average_ratings}}</p>
+<p><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
 
 
     <p><strong>By:</strong> {{project.prof_ref.user.username}}</p>
