@@ -13,6 +13,8 @@ urlpatterns=[
     path('upload_project/', views.upload_project, name='upload_project'),
     path('project/<project_id>/',views.project,name ='project'),
     path('rate/<project_id>/',views.rate,name ='rate'),
+    path('search/', views.search_results, name='search_results'),
+
 
 
 

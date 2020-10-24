@@ -1,0 +1,30 @@
+{%extends 'base.html'%} 
+{% block content %}
+<div class="container">
+  <div class="row text-center">
+    {% if projects%}
+      <h2>Found {{ projects|length }} projects with searched term '{{message}}'</h2>
+    {% else %}
+      <h2> Found 0 projects for the search term {{message}}</h2>
+    {% endif %}
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-mb-4 mt-3">
+        {% if projects %}
+        {% for project in projects %}
+        <p><strong>Average Rating:</strong> {{project.average_ratings}}</p>
+
+
+    <p><strong>By:</strong> {{project.prof_ref.user.username}}</p>
+    <p><strong>Title:</strong> {{project.title}}</p>
+    <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
+    <a href="{% url 'project' project.id %}"><img src="{{project.project_image.url}}" style="width:30%;" class="card-img" alt="Image"></a>
+    <p><strong>Posted:</strong> {{project.pub_date}}</p> <br>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -42,6 +42,12 @@ class Project(models.Model):
             return sum/len(ratings)
         else:
             return 0
+
+    @classmethod
+    def search_project(cls, search_term):
+        projs = cls.objects.filter(title__icontains=search_term)
+        return projs
+
     
     def __str__(self):
         return self.title
