@@ -76,15 +76,18 @@ def project(request,project_id):
 
 
 
-# def Rate(request, project_id):
-#     project = Project.objects.get(id=project_id)
-#     user = request.user
+def rate(request, project_id):
+    project = Project.objects.get(id=project_id)
+    user = request.user
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.project = project
+            rate.save()
+            return redirect('index')
+    else:
+        form = RateForm()
+    return render(request, 'rate.html', locals())
 
-#     if request.method == 'POST':
-#         form = RateForm(request.POST)
-#         if form.is_valid():
-#             rate = form.save(commit=False)
-#             rate.user = user
-#             rate.project = project
-#             rate.save()
-#             return redirect('project')

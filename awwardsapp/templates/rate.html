@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+{{block.super}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-center">Rate the Project</legend>
+                        {{ form|crispy }}
+                </fieldset>
+                <div class="from-group">
+                    <button class="btn btn-outline-info" type="submit">Rate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

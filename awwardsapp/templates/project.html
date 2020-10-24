@@ -1,5 +1,7 @@
 {% extends 'base.html'%}
+{% load crispy_forms_tags %}
 {% block content %}
+{{block.super}}
 <div class="container">
    <div class="row"><br><br>
     <div class="card mb-4 border">
@@ -13,12 +15,11 @@
         <p><strong>Description:</strong> {{project.description}}</p>
         <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
         <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image">
-        <p><strong>Posted:</strong> {{project.pub_date}}</p> 
-            <br><br>
-            
-            
-        
-        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home Page</a><br>
+        <p><strong>Posted:</strong> {{project.pub_date}}</p><br><br>        
+        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home Page</a>
+        <br>
+        <a href="{% url 'rate' project_id=project.id%}" class="btn btn-success">Rate the Project</a>
+
     </div>
     </div>
     </div>

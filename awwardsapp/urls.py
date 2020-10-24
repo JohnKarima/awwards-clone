@@ -12,6 +12,7 @@ urlpatterns=[
     path('update/', views.update, name='update'),
     path('upload_project/', views.upload_project, name='upload_project'),
     path('project/<project_id>/',views.project,name ='project'),
+    path('rate/<project_id>/',views.rate,name ='rate'),
 
 
 
