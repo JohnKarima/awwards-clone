@@ -28,6 +28,20 @@ class Project(models.Model):
     class Meta:
     
         ordering = ['pub_date']
+
+    def no_of_ratings(self):
+        ratings = Rating.objects.filter(project=self)
+        return len(ratings)
+
+    def average_ratings(self):
+        sum = 0
+        ratings = Rating.objects.filter(project=self)
+        for rating in ratings:
+            sum += ((rating.rate_design + rating.rate_usability + rating.rate_content)/3)
+        if len(ratings) > 0:
+            return sum/len(ratings)
+        else:
+            return 0
     
     def __str__(self):
         return self.title
@@ -35,16 +49,16 @@ class Project(models.Model):
 
 
 RATE_CHOICES = [
-    (1,'1-Dung'),
-    (2,'2-Troll'),
-    (3,'3-Awful'),
-    (4,'4-Poor'),
-    (5,'5-Average'),
-    (6,'6-Barely Above Average'),
-    (7,'7-Good'),
-    (8,'Excellent'),
-    (9,'Exceeds Expectations'),
     (10,'10-Outstanding'),
+    (9,'9-Exceeds Expectations'),
+    (8,'8-Excellent'),
+    (7,'7-Good'),
+    (6,'6-Barely Above Average'),
+    (5,'5-Average'),
+    (4,'4-Poor'),
+    (3,'3-Awful'),
+    (2,'2-Troll'),
+    (1,'1-Dung'),
 ]
 
 class Rating(models.Model):

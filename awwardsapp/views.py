@@ -12,6 +12,7 @@ from django.http.response import Http404
 def index(request):
     projects = Project.objects.all()
     users = User.objects.all()
+    
     return render(request, 'index.html', {"projects":projects[::-1], "users": users})
 
 def register(request):
