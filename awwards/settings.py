@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'awwards.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY='np2kcrwvls9_o@j-gw+j%f#acyp!-xesktda1kht=ju(u*s5=*'
 DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': {
