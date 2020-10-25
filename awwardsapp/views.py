@@ -65,17 +65,18 @@ def update(request):
 
 @login_required
 def upload_project(request):
+    users = User.objects.exclude(id=request.user.id)
     if request.method == "POST":
         form = ProjectUploadForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit = False)
-            project.user = request.user.profile
+            project.prof_ref = request.user.profile
             project.save()
             messages.success(request, f'Successfully uploaded your Project!')
             return redirect('index')
     else:
         form = ProjectUploadForm()
-    return render(request, 'upload_project.html', {"form": form})
+    return render(request, 'upload_project.html', {"form": form, "users": users})
 
 def project(request,project_id):
     try:

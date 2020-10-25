@@ -1,25 +1,32 @@
 {%extends 'base.html'%}
 {%load static%}
 {%load cloudinary%}
-
 {% block content %}
 {{block.super}}
+<div style="background-image:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(/static/img/background1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed; height:90vh;"><br><br>
 
 <h1> Welcome to Awwards!!!</h1>
-{% for project in projects %}
+</div>
 
-<p><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
+<div class="container-fluid pb-5">
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-sm-4 mt-4">
+          <div class="card">
+            <a href="{% url 'project' project.id %}">
+                <img src="{{project.project_image.url}}" style="width:100%;height:56%;" class="img-responsive" alt="Card Image"></a><br>
+                <h5 class="card-title pl-2">Project: {{project.title}}</h5>
 
-
-    <p><strong>By:</strong> {{project.prof_ref.user.username}}</p>
-    <p><strong>Title:</strong> {{project.title}}</p>
-    <p><strong>Description:</strong> {{project.description}}</p>
-    <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
-    <a href="{% url 'project' project.id %}"><img src="{{project.project_image.url}}" style="width:30%;" class="card-img" alt="Image"></a>
-    <p><strong>Posted:</strong> {{project.pub_date}}</p> 
-                    
-                
+                <div class="card-body">
+                    <p class="card-text">{{project.description}}</p>
+                  </div>
+                <p class="pl-2"><strong>By:</strong> {{project.prof_ref.user.username}}</p>
+                <p class="pl-2"><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
+                <p class="pl-2"><strong>Posted on:</strong> {{project.pub_date}}</p><br><br>
+          </div>
+        </div>
         {% endfor %}
-
+    </div>
+</div><br><br><br><br><br><br>
 {% endblock %}
 

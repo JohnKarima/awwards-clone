@@ -4,8 +4,9 @@
 {%load cloudinary%}
 {%block content %}
 {{block.super}}
-<div class="container">
+<div class="container"><br><br>
     <div class="row">
+        <div class="col-md-2"></div>
         <div class="col-md-8">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -18,6 +19,7 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 
