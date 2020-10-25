@@ -1,4 +1,18 @@
 h1 {
-    color: blue;
+    color: #114e8b;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#h1main {
+    font-size: 390%;
+}
+
+#cardoffwhite {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.underline {
+    text-decoration: underline;
+
+}
