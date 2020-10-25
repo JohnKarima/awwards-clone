@@ -4,19 +4,33 @@
 {{block.super}}
 <div class="container">
    <div class="row"><br><br>
-    <div class="card mb-4 border">
+    <div class="card mb-4 border" id="cardoffwhite">
         <div class="card-title">
     </div>
     <div class="card-body mb-4">
+        <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image"><br><br>
+        <div class="container text-center">
         <p><strong>Title:</strong> {{project.title|title}}</p>
         <p><strong>By:</strong> {{project.prof_ref.user.username|title}}</p>
-        <p><strong>Full Description:</strong> {{project.description|title}}</p>
-        <p><a target="_blank" href="{{project.link}}">Link to Project</a></p>
-        <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image">
-        <p><strong>Posted:</strong> {{project.pub_date}}</p><br><br>        
-        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home Page</a>
+        
+        <p class=""><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
+        <p><strong>Full Description:</strong> {{project.description|title}}</p></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">        <a href="{% url 'rate' project_id=project.id%}" class="btn btn-outline-success">Rate the Project</a>
+                </div>
+                <div class="col-md-3">        <a href="{{project.link}}" class="btn btn-outline-primary">Project Live Link</a>
+                </div>
+
+            </div>
+        </div><br><br> 
+
+        
         <br>
-        <a href="{% url 'rate' project_id=project.id%}" class="btn btn-success">Rate the Project</a>
+        <p><strong>Posted:</strong> {{project.pub_date}}</p> 
+        <p><a target="_blank" href="{%url 'index' %}">Back to Home Page</a></p>
+      
+
 
     </div>
     </div>
