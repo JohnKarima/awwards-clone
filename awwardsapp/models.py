@@ -63,8 +63,8 @@ RATE_CHOICES = [
     (5,'5-Average'),
     (4,'4-Poor'),
     (3,'3-Awful'),
-    (2,'2-Troll'),
-    (1,'1-Dung'),
+    (2,'2-Dreadful'),
+    (1,'1-Troll'),
 ]
 
 class Rating(models.Model):

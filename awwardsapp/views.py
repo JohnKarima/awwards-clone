@@ -103,7 +103,7 @@ def rate(request, project_id):
             rate.user = user
             rate.project = project
             rate.save()
-            return redirect('index')
+        return render(request, 'project.html', locals())
     else:
         form = RateForm()
     return render(request, 'rate.html', locals())

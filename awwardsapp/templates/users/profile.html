@@ -1,8 +1,8 @@
-{%extends 'base.html'%}
+{% extends 'base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
-<div class="container"><br>
+<div class="container"><br><br>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -19,17 +19,20 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         {% for project in projects %}
         <div class="col-md-4 mt-4">
-          <div class="card">
+            <div class="card zoom" id="cardoffwhite">
             
-                <img src="{{project.project_image.url}}" style="width:100%;height:56%;" class="img-responsive" alt="Image"><br><hr>
-                <p><strong>Title:</strong> {{project.title}}</p>
-                <p><strong>Description:</strong> {{project.description}}</p>
-                <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
+            <a href="{% url 'project' project.id %}"><img src="{{project.project_image.url}}" style="width:100%;height:56%;" class="img-responsive" alt="Image"></a><br><hr>
+            <div class="card-body">
 
+                <p><strong>Title:</strong> {{project.title|title}}</p>
+                <p><strong>Description:</strong> {{project.description|title|truncatechars:50}}</p>
+                <p class=""><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
+                <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
+</div>
             </div>
         </div>
         {% endfor %}
