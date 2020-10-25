@@ -6,7 +6,6 @@ from django.db.models.signals import pre_delete
 import cloudinary
 import datetime as dt
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)
@@ -14,8 +13,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
-
-
 
 class Project(models.Model):
     title = models.CharField(max_length = 60)
@@ -51,8 +48,6 @@ class Project(models.Model):
     
     def __str__(self):
         return self.title
-
-
 
 RATE_CHOICES = [
     (10,'10-Outstanding'),

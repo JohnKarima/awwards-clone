@@ -14,7 +14,6 @@ from .serializers import ProfileSerializer, ProjectSerializer
 def index(request):
     projects = Project.objects.all()
     users = User.objects.all()
-    
     return render(request, 'index.html', {"projects":projects[::-1], "users": users})
 
 def register(request):
@@ -25,7 +24,6 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Successfully created account created for {username}! Please log in to continue')
             return redirect('login')
-
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form':form})
@@ -41,7 +39,6 @@ class ListProfileView(generics.ListAPIView):
     """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
 
 @login_required
 def update(request):

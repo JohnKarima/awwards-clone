@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{% extends 'base.html'%}
 {%load crispy_forms_tags%}
 {% block content %}
 {{block.super}}
@@ -12,7 +12,7 @@
             <fieldset class="form-group">
                 {{ form|crispy }}
             </fieldset>
-            <div class="from-group text-center">
+            <div class="form-group text-center">
                 <button class="btn btn-outline-info" type="submit">Log In</button>
             </div>
             </form><br>

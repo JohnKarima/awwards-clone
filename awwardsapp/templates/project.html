@@ -3,37 +3,25 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-   <div class="row"><br><br>
-    <div class="card mb-4 border" id="cardoffwhite">
-        <div class="card-title">
-    </div>
-    <div class="card-body mb-4">
-        <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image"><br><br><hr>
-        <div class="container text-center">
-        <p><strong>Title:</strong> {{project.title|title}}</p>
-        <p><strong>By:</strong> {{project.prof_ref.user.username|title}}</p>
-        
-        <p class=""><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
-        <p><strong>Full Description:</strong> {{project.description|title}}</p></div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-10">        <a href="{% url 'rate' project_id=project.id%}" class="btn btn-outline-success">Rate the Project</a>
-                </div>
-                <div class="col-md-2">        <a target="_blank" href="{{project.link}}" class="btn btn-outline-primary">Project Live Link</a>
-                </div>
-
+    <div class="row"><br><br>
+        <div class="card mb-4 border" id="cardoffwhite">
+            <div class="card-body mb-4">
+                <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image"><br><br><hr>
+            <div class="container text-center">
+                <p><strong>Title:</strong> {{project.title|title}}</p>
+                <p><strong>By:</strong> {{project.prof_ref.user.username|title}}</p>
+                <p class=""><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
+                <p><strong>Full Description:</strong> {{project.description|title}}</p></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-10"><a href="{% url 'rate' project_id=project.id%}" class="btn btn-outline-success">Rate the Project</a></div>
+                        <div class="col-md-2"><a target="_blank" href="{{project.link}}" class="btn btn-outline-primary">Project Live Link</a></div>
+                    </div>
+                </div><br><br><br>
+                    <p><strong>Posted:</strong> {{project.pub_date}}</p> 
+                    <p><a href="{%url 'index' %}">Back to Home Page</a></p>
             </div>
-        </div><br><br> 
-
-        
-        <br>
-        <p><strong>Posted:</strong> {{project.pub_date}}</p> 
-        <p><a href="{%url 'index' %}">Back to Home Page</a></p>
-      
-
-
-    </div>
-    </div>
+        </div>
     </div>
 </div><br><br><br><br><br>
  {% endblock %}

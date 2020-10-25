@@ -21,6 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('awwardsapp.urls')),
     path('register/', user_views.register, name = 'register'),
-    # re_path('awwards/(?P<version>(v1|v2))/', include('awwardsapp.urls'))
-
 ]
