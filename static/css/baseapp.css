@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
     color: #114e8b;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -14,5 +14,20 @@ h1 {
 
 .underline {
     text-decoration: underline;
+
+}
+
+.zoom {
+    transition: transform .2s; 
+}
+  
+.zoom:hover {
+    transform: scale(1.02); 
+    border: 3px solid #114e8b;
+    overflow: hidden;  
+}
+
+.fadeout{
+    transition: opacity 0.1s;
 
 }
