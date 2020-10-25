@@ -8,10 +8,10 @@
         <div class="card-title">
     </div>
     <div class="card-body mb-4">
-        <p><strong>By:</strong> {{project.prof_ref.user.username}}</p>
-        <p><strong>Title:</strong> {{project.title}}</p>
-        <p><strong>Description:</strong> {{project.description}}</p>
-        <p><strong>Link:</strong> <a target="_blank" href="{{project.link}}">Link to Project</a></p>
+        <p><strong>Title:</strong> {{project.title|title}}</p>
+        <p><strong>By:</strong> {{project.prof_ref.user.username|title}}</p>
+        <p><strong>Full Description:</strong> {{project.description|title}}</p>
+        <p><a target="_blank" href="{{project.link}}">Link to Project</a></p>
         <img src="{{project.project_image.url}}" style="width:100%;" class="card-img" alt="Image">
         <p><strong>Posted:</strong> {{project.pub_date}}</p><br><br>        
         <a href="{% url 'index' %}" class="btn btn-primary">Back to Home Page</a>
