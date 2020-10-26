@@ -47,6 +47,10 @@ python manage.py runserver
 $ python3 manage.py test instaapp
 ```
 
+# Access the APIs
+- https://awwardsclone343.herokuapp.com/api/project
+- https://awwardsclone343.herokuapp.com/api/profile
+
 # Technologies Used
 - Python
 - Django
