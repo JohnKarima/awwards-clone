@@ -13,10 +13,10 @@
                 <p class=""><strong>Average Rating:</strong> {{project.average_ratings|floatformat}}</p>
                 <p class="underline"><strong>Full Description:</strong></p>           
                 <p>{{project.description}}</p></div>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-10"><a href="{% url 'rate' project_id=project.id%}" class="btn btn-outline-success">Rate the Project</a></div>
-                        <div class="col-md-2"><a target="_blank" href="{{project.link}}" class="btn btn-outline-primary">Project Live Link</a></div>
+                        <div class="col-md-9"><a href="{% url 'rate' project_id=project.id%}" class="btn btn-outline-success">Rate the Project</a></div>
+                        <div class="col-md-3"><a target="_blank" href="{{project.link}}" class="btn btn-outline-primary">Project Live Link</a></div>
                     </div>
                 </div><br><br><br>
                     <p><strong>Posted:</strong> {{project.pub_date}}</p> 
