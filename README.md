@@ -48,7 +48,7 @@ python manage.py runserver
 ```
 ### Run the test for the application
 ```
-$ python3 manage.py test instaapp
+$ python3 manage.py test awwards
 ```
 
 # Technologies Used
